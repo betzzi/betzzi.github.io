@@ -5,14 +5,44 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="ROBOTS" content="INDEX,FOLLOW" />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet" />
 <title>심의 요청 및 조회</title>
 <style>
 /* reset style via avecvalsegmailcom 2024 */
-body,div,dl,dt,dd,th,td,ul,ol,li,h1,h2,h3,h4,h5,p,span,a,button,input,textarea{margin:0;padding:0;font-weight:normal;font-family:sans-serif;color:#333;font-size:14px}
+body,div,dl,dt,dd,th,td,ul,ol,li,h1,h2,h3,h4,h5,p,span,a,button,input,textarea{margin:0;padding:0;font-weight:normal;font-family:Pretendard;color:#333;font-size:14px}
 hr,legend {display:none;}img,fieldset{border:0 none;}ul,ol,li{list-style:none outside;}table {border-collapse:collapse;}em{font-style:normal}
 input{appearance:none;vertical-align: middle;background: #FFF;border-radius: 4px;border: 1px solid #ccc;}
 textarea{appearance:none;vertical-align: middle;line-height: 140%;background: #FFF;border-radius: 4px;border: 1px solid #ccc;}
 a:link,a:visited,a:active,a:hover{text-decoration:none;color:#333;}body{background: #FFF}.hidden{display:none !important;}
+
+/* page */
+.wrap{background: #EBEBEF;}
+.header{position: relative;height: 60px;background: #000;}
+.header h1{color:#FFF;font-size: 16px;font-weight: 600;text-align: center;width: 40%;height: 60px;line-height: 60px;margin:0 auto;}
+.header .btn_back{position: absolute;top:0;left: 0;width: 60px;height: 60px;text-indent: -999em;background:none;}
+.header .btn_back::before{content: "";position: absolute;background: #FFF;transform: rotate(-45deg);width: 16px;height: 3px;top: 21px;left: 18px;}
+.header .btn_back::after{content: "";position: absolute;background: #FFF;transform: rotate(45deg);width: 16px;height: 3px;top: 31px;left: 18px;}
+.header .btn_menu{position: absolute;top:0;right: 0;}
+.contents h2{padding:20px;height: 16px;border-bottom: 1px solid #E9ECF2;font-size: 18px;font-weight: 600;background: #FFF;}
+.sec_filter{padding: 20px;background: #FFF;border-radius: 0px 0px 16px 16px;margin:0 0 24px 0;}
+.sec_filter dl{background: #F6F6F6;padding: 12px;border-radius: 8px;}
+.sec_filter dt{display: inline-block;width: 40%;vertical-align: top;}
+.sec_filter dd{display: inline-block;width: 58%;}
+.sec_filter dd input{width: 100%;height: 28px;background: #FFF;text-indent: 12px;margin: 0 0 8px 0;}
+.sec_filter dd select{width: 100%;height: 28px;background: #FFF;text-indent: 12px;border-radius: 4px;border: 1px solid #ccc;}
+.sec_filter .btn_filter_send{width: 100%;height: 36px;line-height: 36px;border: 1px solid #223CB5;border-radius: 4px;color: #223CB5;text-align: center;font-size: 16px;font-weight: 600;background: #FFF;margin:16px 0 0 0;}
+.sec_item_list .item{margin:0 0 4px 0;padding:20px;background: #FFF;}
+.sec_item_list .list_header{height: 56px;padding:0 20px;position: relative;border-bottom: 1px solid #DDE1EA;}
+.sec_item_list .total_item_num{font-weight: 500;line-height: 56px;}
+.sec_item_list .total_item_num strong{color: #1465DE;}
+.sec_item_list .set_sort{position: absolute;top:12px;right:20px;width: 115px;height: 32px;border:1px solid #ccc;border-radius: 20px;padding: 0 0 0 12px;}
+.sec_item_list .item .badge{display: inline-block;margin:0 8px 8px 0;width: 52px;height: 24px;line-height: 24px;border: 1px solid #28A745;color: #28A745;text-align: center;font-weight: 600;border-radius: 4px;font-size: 12px;}
+.sec_item_list .item .badge.complete{background: #28A745;color: #FFF;}
+.sec_item_list .item .title{display: inline-block;}
+.sec_item_list .item .text{font-size: 16px;font-weight: 600;margin:0 0 20px 0;}
+.sec_item_list .item .seq{border-bottom: 1px solid #E9ECF2;margin:0 0 12px 0;padding:0 0 12px 0;}
+.sec_item_list .item .date_rqst{display: inline-block;width: 48%;}
+.sec_item_list .item .date_complete{display: inline-block;width: 48%;text-align: right;}
 </style>
 </head>
 <body>
@@ -51,7 +81,7 @@ a:link,a:visited,a:active,a:hover{text-decoration:none;color:#333;}body{backgrou
         <div class="sec_item_list">
             <div class="list_header">
                 <p class="total_item_num">전체 <strong>105</strong>건</p>
-                <select>
+                <select class="set_sort">
                     <option>최근 요청순</option>
                 </select>
             </div>
@@ -65,7 +95,39 @@ a:link,a:visited,a:active,a:hover{text-decoration:none;color:#333;}body{backgrou
                     <p class="date_complete">완료 : YYYY-MM-DD hh:mm</p>
                 </li>
                 <li class="item">
-                    <p class="badge complete">심의요청</p>
+                    <p class="badge">심의요청</p>
+                    <p class="title">[예능]밥이나 한잔해</p>
+                    <p class="text">밥이나 한잔해 자막 확인 요청 건</p>
+                    <p class="seq">1~2화 | 가편</p>
+                    <p class="date_rqst">요청 : YYYY-MM-DD hh:mm</p>
+                    <p class="date_complete">완료 : YYYY-MM-DD hh:mm</p>
+                </li>
+                <li class="item">
+                    <p class="badge complete">심의완료</p>
+                    <p class="title">[예능]밥이나 한잔해</p>
+                    <p class="text">[지금 이 순간] 1회 파트2~6 심의 요청 드립니다.</p>
+                    <p class="seq">1~2화 | 가편</p>
+                    <p class="date_rqst">요청 : YYYY-MM-DD hh:mm</p>
+                    <p class="date_complete">완료 : YYYY-MM-DD hh:mm</p>
+                </li>
+                <li class="item">
+                    <p class="badge">심의요청</p>
+                    <p class="title">[예능]밥이나 한잔해</p>
+                    <p class="text">밥이나 한잔해 자막 확인 요청 건</p>
+                    <p class="seq">1~2화 | 가편</p>
+                    <p class="date_rqst">요청 : YYYY-MM-DD hh:mm</p>
+                    <p class="date_complete">완료 : YYYY-MM-DD hh:mm</p>
+                </li>
+                <li class="item">
+                    <p class="badge complete">심의완료</p>
+                    <p class="title">[예능]밥이나 한잔해</p>
+                    <p class="text">[지금 이 순간] 1회 파트2~6 심의 요청 드립니다.</p>
+                    <p class="seq">1~2화 | 가편</p>
+                    <p class="date_rqst">요청 : YYYY-MM-DD hh:mm</p>
+                    <p class="date_complete">완료 : YYYY-MM-DD hh:mm</p>
+                </li>
+                <li class="item">
+                    <p class="badge">심의요청</p>
                     <p class="title">[예능]밥이나 한잔해</p>
                     <p class="text">밥이나 한잔해 자막 확인 요청 건</p>
                     <p class="seq">1~2화 | 가편</p>
